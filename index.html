@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="store">
+ 
+<head>
+    <title>Python Flask Bucket List App</title>
+ 
+	<link rel="stylesheet" href="/static/css/material-design-iconic-font.min.css">
+	
+	<link rel="stylesheet" href="/static/css/css-1440771149.css"/>
+
+	<link href="https://fonts.googleapis.com/css?family=RobotoDraft:400,500,700,400italic" rel="stylesheet" type="text/css">
+
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+ 
+    <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+	<script type="text/javascript" src="/static/js/jquery.min.js.offline"></script>
+	<script type="text/javascript" src="/static/js/jquery.cookies.js"></script>
+	<script type="text/javascript" src="/static/js/jsapi.js.offline"></script>
+	<script type="text/javascript" src="/static/js/angular.min.js"></script>
+	<script type="text/javascript" src="/static/js/app.js"></script>
+	<script>
+	$(function() {
+    $('#btnSignUp').click(function() {
+ 
+        $.ajax({
+            url: '/submit',
+            data: $('form').serialize(),
+            type: 'POST',
+            success: function(response) {
+                //console.log(data);
+				console.log('Something successful');
+            },
+            error: function(error) {
+                console.log(error);
+            }
+        });
+    });
+});
+	</script>
+ 
+</head>
+ 
+<body>
+ 
+	<div class="header-bar">
+
+		
+
+<div class="register-link" onclick="showSaveUser()" style="float:right;padding: 21px 24px 19px 0px; font-size: 16px;">Register</div>
+				
+<div id="input-query-container" class="text-light">
+	<div id="insert-transaction-label">Transaction Type</div>
+	<div id="fields-container">
+		<form id="multi-field-insert-form-fields" style="float:left">
+			<div style="float:left"> 
+				<select name="type" > 
+					<option value="expense" selected>Credit Card</option> 
+					<option value="income">Bank Salary</option> 
+					<option value="transfer">Bank 2</option> 
+					<option value="balanceReset">Account Transfer</option> 
+				</select> 
+			</div> 
+				<input type="number" name="amount" placeholder="amount" AUTOCOMPLETE="OFF"> 
+				<input type="text" name="tags" placeholder="tag">
+				<input type="text" name="name" placeholder="description" AUTOCOMPLETE="OFF"> 
+				<input type="text" name="account" placeholder="from account"> 
+				<input type="text" name="account2" placeholder="to account"> 
+				<input class="date" type="date" name="date"/> 
+				<button id="btnSignUp" type="button">Sign up</button>
+		</form>
+		<div class="clear"></div> 
+	</div>
+</div>
+	
+	<div id="header-bar-h" style="height:58px"></div>
+	<div class="container">
+		<footer class="footer">
+			<p>&copy; Company 2015</p>
+		</footer>
+	</div>
+</body>
+</html>
